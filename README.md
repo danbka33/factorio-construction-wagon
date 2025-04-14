@@ -72,8 +72,8 @@ The mod supports **flexible configuration** for different playstyles. All parame
 - **Parameter:** `Construction train wagon inventory size`  
 - **Description:** Number of item slots (for construction materials, drones, etc.).  
 - **Values:**  
-  - Default: **40** (same as regular wagon)  
-  - Minimum: **40**  
+  - Default: **20** (same as regular wagon)  
+  - Minimum: **20**  
   - Maximum: **1000** (for mega-bases)  
 
 #### **5. Equipment Grid Size (Width × Height)**  
