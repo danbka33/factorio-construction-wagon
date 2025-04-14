@@ -24,13 +24,7 @@ data:extend({
     },
 })
 
--- local constructionLocomotive = table.deepcopy(data.raw["locomotive"]["locomotive"])
 local constructionWagon = table.deepcopy(data.raw["cargo-wagon"]["cargo-wagon"])
-
--- constructionLocomotive.name = "construction-wagon"
--- constructionLocomotive.equipment_grid = "construction-wagon"
--- constructionLocomotive.minable = { mining_time = 0.5, result = "construction-wagon" }
--- constructionLocomotive.allow_robot_dispatch_in_automatic_mode = true
 
 constructionWagon.name = "construction-cargo-wagon"
 constructionWagon.equipment_grid = "construction-wagon"
@@ -199,8 +193,6 @@ data.extend({ constructionTrainResearch })
 local constructionTrainEquipmentCategory = table.deepcopy(data.raw["equipment-category"]["armor"])
 
 constructionTrainEquipmentCategory.name = "construction-wagon-equipment"
-
-print(constructionTrainEquipmentCategory.name)
 
 data.extend({ constructionTrainEquipmentCategory })
 
