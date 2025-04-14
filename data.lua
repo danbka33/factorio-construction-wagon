@@ -1,4 +1,4 @@
--- Construction train with grid support
+-- Construction wagon
 -- Copyright (C) 2025 danbka33
 
 -- This program is free software: you can redistribute it and/or modify
@@ -152,7 +152,6 @@ constructionTrainRoboportEquipment.sprite =
 
 data.extend({ constructionTrainRoboportEquipment })
 
--- local constructionLocomotiveItem = table.deepcopy(data.raw["item-with-entity-data"]["locomotive"])
 local constructionWagonItem = table.deepcopy(data.raw["item-with-entity-data"]["cargo-wagon"])
 local constructionWagonRoboport = table.deepcopy(data.raw["item"]["personal-roboport-equipment"])
 
@@ -160,28 +159,22 @@ constructionWagonRoboport.name = "construction-wagon-roboport"
 constructionWagonRoboport.place_as_equipment_result = "construction-wagon-roboport-equipment"
 constructionWagonRoboport.icon = "__construction-wagon__/graphics/icons/construction-wagon-roboport.png"
 
--- constructionLocomotiveItem.name = "construction-wagon"
--- constructionLocomotiveItem.place_result = "construction-wagon";
-
-
 constructionWagonItem.name = "construction-cargo-wagon"
 constructionWagonItem.place_result = "construction-cargo-wagon";
 constructionWagonItem.icon = "__construction-wagon__/graphics/icons/cargo-wagon.png"
 
 data.extend({ constructionWagonItem, constructionWagonRoboport })
 
--- local constructionLocomotiveRecipe = table.deepcopy(data.raw["recipe"]["locomotive"])
 local constructionWagonRecipe = table.deepcopy(data.raw["recipe"]["cargo-wagon"])
-
--- constructionLocomotiveRecipe.name = "construction-wagon"
--- constructionLocomotiveRecipe.results = {{type="item", name="construction-wagon", amount=1}}
-
-
 constructionWagonRecipe.name = "construction-cargo-wagon"
 constructionWagonRecipe.results = { { type = "item", name = "construction-cargo-wagon", amount = 1 } }
 
+local constructionWagonRoboportRecipe = table.deepcopy(data.raw["recipe"]["personal-roboport-equipment"])
 
-data.extend({ constructionWagonRecipe })
+constructionWagonRoboportRecipe.name = "construction-wagon-roboport"
+constructionWagonRoboportRecipe.results = { { type = "item", name = "construction-wagon-roboport", amount = 1 } }
+
+data.extend({ constructionWagonRecipe, constructionWagonRoboportRecipe })
 
 local constructionTrainResearch = table.deepcopy(data.raw["technology"]["railway"])
 
@@ -191,6 +184,10 @@ constructionTrainResearch.effects =
     {
         type = "unlock-recipe",
         recipe = "construction-cargo-wagon"
+    },
+    {
+        type = "unlock-recipe",
+        recipe = "construction-wagon-roboport"
     }
 }
 constructionTrainResearch.prerequisites = { "railway", "personal-roboport-equipment" }

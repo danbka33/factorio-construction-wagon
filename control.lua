@@ -1,4 +1,4 @@
--- Construction train with grid support
+-- Construction wagon
 -- Copyright (C) 2025 danbka33
 
 -- This program is free software: you can redistribute it and/or modify

@@ -26,6 +26,9 @@ This mod adds a specialized **construction cargo wagon** with **equipment grid**
 📌 **Consturction wagon craft cost** =  
 `(Base wagon cost + Personal roboport T1 cost) × 2`  
 
+📌 **Consturction wagon roboport craft cost** =  
+`Personal roboport T1 cost × 2`
+
 📌 **Research cost** =  
 `Highest values between train technologies and personal roboport technologies`  
 

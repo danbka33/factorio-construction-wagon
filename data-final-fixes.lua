@@ -1,4 +1,4 @@
--- Construction train with grid support
+-- Construction wagon
 -- Copyright (C) 2025 danbka33
 
 -- This program is free software: you can redistribute it and/or modify
@@ -44,12 +44,22 @@ local function mergeIngredients(ingredients1, ingredients2)
     for _, ingredient in ipairs(ingredients2) do
         addIngredient(ingredient)
     end
-    
-    for _, ingredient in ipairs(merged) do
+
+    return merged
+end
+
+local function doubleIngedients(ingredients)
+    if not ingredients then
+        return {}
+    end
+
+    local doubledIngredients = table.deepcopy(ingredients)
+
+    for _, ingredient in ipairs(doubledIngredients) do
         ingredient.amount = ingredient.amount * 2
     end
 
-    return merged
+    return doubledIngredients
 end
 
 local function mergeUnits(unit1, unit2)
@@ -147,9 +157,11 @@ local wagonIngredients = table.deepcopy(data.raw["recipe"]["cargo-wagon"].ingred
 
 local personalRoboportIngredients = table.deepcopy(data.raw["recipe"]["personal-roboport-equipment"].ingredients)
 
-local constuctionWagonIngredients = mergeIngredients(wagonIngredients, personalRoboportIngredients)
+local constuctionWagonIngredients = doubleIngedients(mergeIngredients(wagonIngredients, personalRoboportIngredients))
 
 data.raw["recipe"]["construction-cargo-wagon"].ingredients = constuctionWagonIngredients
+
+data.raw["recipe"]["construction-wagon-roboport"].ingredients = doubleIngedients(personalRoboportIngredients)
 
 local wagonResearchUnit = table.deepcopy(data.raw["technology"]["railway"].unit)
 
