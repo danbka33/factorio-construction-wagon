@@ -23,14 +23,6 @@ fi
 local MOD_VERSION=$(jq -r '.version' info.json)
 local MOD_NAME=$(jq -r '.name' info.json)
 
-
-# Validate the version string we're building
-if ! echo "${MOD_VERSION}" | grep -P --quiet '^\d+\.\d+\.\d+$'; then
-    echo "Incorrect version pattern, needs to be %u.%u.%u (e.q., 0.1.0)"
-    exit 1
-fi
-
-
 # Get an upload url for the mod
 local URL_RESULT=$(curl -s -d "mod=${MOD_NAME}" -H "Authorization: Bearer ${FACTORIO_MOD_API_KEY}" https://mods.factorio.com/api/v2/mods/releases/init_upload)
 local UPLOAD_URL=$(echo "${URL_RESULT}" | jq -r '.upload_url')
@@ -41,7 +33,6 @@ if [[ "${UPLOAD_URL}" == "null" ]] || [[ -z "${UPLOAD_URL}" ]]; then
     echo "${ERROR}: ${MESSAGE}"
     exit 1
 fi
-
 
 # Upload the file
 local UPLOAD_RESULT=$(curl -s -F "file=@${MOD_NAME}_${MOD_VERSION}.zip" "${UPLOAD_URL}")

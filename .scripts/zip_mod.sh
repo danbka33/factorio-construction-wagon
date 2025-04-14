@@ -58,14 +58,6 @@ echo "Target folder: ${mod_folder}"
 local MOD_NAME=$(jq -r '.name' info.json)
 local MOD_VERSION=$(jq -r '.version' info.json)
 
-
-# Validate the version string we're building
-if ! echo "${MOD_VERSION}" | grep -P --quiet '^\d+\.\d+\.\d+$'; then
-    echo "Incorrect version pattern, needs to be %u.%u.%u (e.q., 0.1.0)"
-    exit 1
-fi
-
-
 ### Prepare zip for Factorio native use and mod portal
 ### https://www.7-zip.org/download.html
 local name="${MOD_NAME}_${MOD_VERSION}"
